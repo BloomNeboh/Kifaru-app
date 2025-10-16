@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Kifaru Lodge",
+    "location": "Serengeti",
+    "pricePerNight": 250,
+    "images": [],
+    "rating": 4.6
+  },
+  {
+    "name": "Savanna Camp",
+    "location": "Ngorongoro",
+    "pricePerNight": 180,
+    "images": [],
+    "rating": 4.3
+  }
+]

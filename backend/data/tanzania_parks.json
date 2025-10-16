@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Serengeti",
+    "region": "Mara",
+    "lat": -2.333,
+    "lng": 34.833
+  },
+  {
+    "name": "Ngorongoro",
+    "region": "Arusha",
+    "lat": -3.161,
+    "lng": 35.587
+  },
+  {
+    "name": "Tarangire",
+    "region": "Manyara",
+    "lat": -3.976,
+    "lng": 36.181
+  }
+]

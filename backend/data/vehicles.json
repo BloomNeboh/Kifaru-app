@@ -1,1 +1,10 @@
-
+[
+  {
+    "type": "4x4",
+    "capacity": 6
+  },
+  {
+    "type": "minibus",
+    "capacity": 12
+  }
+]
