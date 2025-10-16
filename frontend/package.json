@@ -1,1 +1,16 @@
-
+{
+  "name": "kifaru-frontend",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+  },
+  "dependencies": {
+    "react": "*",
+    "react-dom": "*",
+    "axios": "*",
+    "react-router-dom": "*",
+    "tailwindcss": "*",
+    "react-scripts": "*"
+  }
+}
