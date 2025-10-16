@@ -1,1 +1,18 @@
-
+{
+  "name": "kifaru-backend",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "*",
+    "mongoose": "*",
+    "bcryptjs": "*",
+    "jsonwebtoken": "*",
+    "cors": "*",
+    "dotenv": "*",
+    "nodemailer": "*",
+    "axios": "*"
+  }
+}
