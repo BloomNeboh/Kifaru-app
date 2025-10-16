@@ -11,7 +11,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// ---------------------
 // API routes
+// ---------------------
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/itineraries', require('./routes/itineraries'));
 app.use('/api/accommodations', require('./routes/accommodations'));
@@ -22,14 +24,27 @@ app.use('/api/bookings', require('./routes/bookings'));
 // Seed admin on startup
 seedAdmin();
 
+// ---------------------
 // Serve frontend build if present
-app.use(express.static(path.join(__dirname, '../frontend/build')));
+// ---------------------
+const frontendPath = path.join(__dirname, '../frontend/build');
+app.use(express.static(frontendPath));
 
-// Catch-all route for React
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+// ---------------------
+// Catch-all route for React safely
+// ---------------------
+// This middleware only triggers if no API route matched
+app.use((req, res, next) => {
+  if (req.path.startsWith('/api')) {
+    // If it's an API route that doesn't exist, return 404
+    return res.status(404).json({ error: 'API route not found' });
+  }
+  // Otherwise, serve React frontend
+  res.sendFile(path.join(frontendPath, 'index.html'));
 });
 
+// ---------------------
 // Start server
+// ---------------------
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
