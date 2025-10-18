@@ -5,11 +5,19 @@ const cors = require('cors');
 const path = require('path');
 const seedAdmin = require('./seedAdmin');
 
-connectDB(); // Connect to MongoDB first
-
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+// ---------------------
+// Connect to MongoDB
+// ---------------------
+connectDB()
+  .then(() => console.log('MongoDB connected successfully'))
+  .catch((err) => {
+    console.error('MongoDB connection error:', err.message);
+    process.exit(1); // Stop server if DB fails
+  });
 
 // ---------------------
 // API routes
@@ -31,15 +39,12 @@ const frontendPath = path.join(__dirname, '../frontend/build');
 app.use(express.static(frontendPath));
 
 // ---------------------
-// Catch-all route for React safely
+// Catch-all route for React
 // ---------------------
-// This middleware only triggers if no API route matched
 app.use((req, res, next) => {
   if (req.path.startsWith('/api')) {
-    // If it's an API route that doesn't exist, return 404
     return res.status(404).json({ error: 'API route not found' });
   }
-  // Otherwise, serve React frontend
   res.sendFile(path.join(frontendPath, 'index.html'));
 });
 
